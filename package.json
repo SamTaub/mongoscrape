@@ -1,0 +1,27 @@
+{
+  "name": "mongoscrape",
+  "version": "1.0.0",
+  "description": "Mongoscrape is an application designed to scrape a news website and save articles to a database.  Users can save articles and leave comments.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SamTaub/mongoscrape.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SamTaub/mongoscrape/issues"
+  },
+  "homepage": "https://github.com/SamTaub/mongoscrape#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.2",
+    "mongoose": "^5.4.19"
+  }
+}
