@@ -23,7 +23,7 @@ const ArticleSchema = new Schema({
     },
     //Create a reference to the associated comment
     comment: {
-        type: Schema.Types.ObjectsId,
+        type: Schema.Types.ObjectId,
         ref: "Comment"
     }
 });
