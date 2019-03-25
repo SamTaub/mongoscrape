@@ -1,3 +1,15 @@
 <h1>Mongo Scrape</h1>
 <button id='scrape'>Scrape PFF</button>
 <button id='viewSaved'>View Saved</button>
+
+<div>
+    {{#if article}}
+    {{#each article}}
+        <div>{{title}}</div>
+        <div>{{link}}</div>
+        <div>{{summary}}</div>
+    {{/each}}
+    {{else}}
+    <div>Looks like there are no new articles</div>
+    {{/if}}
+</div>
