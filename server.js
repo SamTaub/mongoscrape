@@ -59,8 +59,8 @@ app.get('/scrape', function (req, res) {
 
             let result = {};
             result.title = $(this).children('div.content').children('a').children('h5').text();
-            result.link = $(this).children('div.content').children('a').attr('href');
-            result.summary = 'https://www.profootballfocus.com/' + $(this).children('div.content').children('p').text();
+            result.link = 'https://www.profootballfocus.com/' + $(this).children('div.content').children('a').attr('href');
+            result.summary = $(this).children('div.content').children('p').text();
 
             db.Article.create(result)
                 .then(function (dbArticle) {
@@ -70,8 +70,8 @@ app.get('/scrape', function (req, res) {
                     console.log(err);
                 });
         });
-    console.log('Scrape complete');
-    res.send('Scrape completed')
+        console.log('Scrape complete');
+        res.send('Scrape completed')
     });
 });
 
