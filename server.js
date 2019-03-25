@@ -37,11 +37,46 @@ const exphbs = require('express-handlebars');
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-//Application Routing
+//Scrape profootballfocus.com
+app.get('/', function (req, res) {
+    db.Article.find({})
+        .then(function (dbArticle) {
+            const hbsObject = {
+                article: dbArticle
+            };
+            res.render("index", hbsObject);
+        }).catch(function (err) {
+            console.log(err);
+        });
+});
 
+app.get('/scrape', function (req, res) {
+    axios.get('https://www.profootballfocus.com/').then(function (response) {
+
+        const $ = cheerio.load(response.data);
+
+        $('div.news-item').each(function (i, element) {
+
+            let result = {};
+            result.title = $(this).children('div.content').children('a').children('h5').text();
+            result.link = $(this).children('div.content').children('a').attr('href');
+            result.summary = 'https://www.profootballfocus.com/' + $(this).children('div.content').children('p').text();
+
+            db.Article.create(result)
+                .then(function (dbArticle) {
+                    console.log(dbArticle);
+                })
+                .catch(function (err) {
+                    console.log(err);
+                });
+        });
+    console.log('Scrape complete');
+    res.send('Scrape completed')
+    });
+});
 
 //Start server
-app.listen(PORT, function() {
+app.listen(PORT, function () {
     console.log(`Mongo Scrape is running on port ${PORT}.`);
 });
 
