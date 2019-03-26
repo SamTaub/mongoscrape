@@ -76,6 +76,19 @@ app.get('/scrape', function (req, res) {
     });
 });
 
+//Get saved articles
+app.get('/saved', function(req, res){
+    db.Article.find({saved: true})
+    .then(function(savedArticle){
+        const hbsObject = {
+            article: savedArticle
+        };
+        res.render("saved", hbsObject);
+    }).catch(function (err) {
+        res.json(err);
+    });
+});
+
 //Start server
 app.listen(PORT, function () {
     console.log(`Mongo Scrape is running on port ${PORT}.`);

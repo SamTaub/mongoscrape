@@ -1,0 +1,30 @@
+
+
+<div class="row bg-light text-dark text-center p-3">
+    <div class="col">
+        <h1>Pro Football Focus: Mongo Scrape Edition</h1>
+    </div>
+</div>
+
+{{#if savedArticle}}
+{{#each savedArticle}}
+<div class="row d-flex justify-content-left bg-primary text-white border-bottom border-dark p-3">
+    <a href="{{link}}" target="_blank" class="text-white">
+        <h4>{{title}}</h4>
+    </a>
+</div>
+<div class="row p-3 bg-light">
+    {{summary}}
+</div>
+
+<div class="row bg-light">
+    <button type="button" class="btn btn-dark m-2" id="comment">Comment</button>
+    <button type="button" class="btn btn-danger m-2" id="savedArticle">Delete Saved Article</button>
+</div>
+
+{{/each}}
+{{else}}
+<div class="row d-flex justify-content-center bg-primary text-white border-bottom border-dark p-3">
+    <h4>No saved articles. <a href="/" id="savedLink">Visit the front page to find articles to read and save</a>.</h4>
+</div>
+{{/if}}
