@@ -1,15 +1,40 @@
-<h1>Mongo Scrape</h1>
-<button id='scrape'>Scrape PFF</button>
-<button id='viewSaved'>View Saved</button>
+<div class="row bg-light text-dark text-center p-3">
+    <div class="col">
+        <h1>Pro Football Focus: Mongo Scrape Edition</h1>
+    </div>
+</div>
 
-<div>
+<div class="container mb-5">
+    <div class="row">
+        <div class="col p-3 d-flex justify-content-center">
+            <button type="button" class="btn btn-danger m-2" id="scrape">Scrape</button>
+            <button type="button" class="btn btn-success m-2" id="viewSaved">View Saved</button>
+        </div>
+    </div>
+
     {{#if article}}
     {{#each article}}
-        <div>{{title}}</div>
-        <div>{{link}}</div>
-        <div>{{summary}}</div>
+    <div class="row d-flex justify-content-left bg-primary text-white border-bottom border-dark p-3">
+        <a href="{{link}}" target="_blank" class="text-white">
+            <h4>{{title}}</h4>
+        </a>
+    </div>
+    <div class="row p-3 bg-light">
+        {{summary}}
+    </div>
+    
+    <div class="row bg-light">
+        <button type="button" class="btn btn-dark m-2" id="comment">Comment</button>
+        {{#if saved}}
+        {{else}}
+        <button type="button" class="btn btn-success m-2" id="saveArticle">Save Article</button>
+        {{/if}}
+    </div>
+    
     {{/each}}
     {{else}}
-    <div>Looks like there are no new articles</div>
+    <div class="row p-3 bg-light">
+        <h4>No present articles. Click 'Scrape' PFF to get some of the latest news.</h4>
+    </div>
     {{/if}}
 </div>

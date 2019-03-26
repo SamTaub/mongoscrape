@@ -24,6 +24,11 @@ const ArticleSchema = new Schema({
         required: true,
         unique: true
     },
+    //Checks if article is saved
+    saved: {
+        type: Boolean,
+        default: false
+    },
     //Create a reference to the associated comment
     comment: {
         type: Schema.Types.ObjectId,
