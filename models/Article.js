@@ -9,25 +9,21 @@ const ArticleSchema = new Schema({
     //Require a title string
     title: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
     //Require a link string
     link: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
     //Require a summary string
     summary: {
         type: String,
         required: true,
-        unique: true
     },
     //Checks if article is saved
     saved: {
         type: Boolean,
-        default: false
     },
     //Create a reference to the associated comment
     comment: {

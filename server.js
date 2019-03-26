@@ -50,6 +50,7 @@ app.get('/', function (req, res) {
         });
 });
 
+//Scrape profootballfocus.com
 app.get('/scrape', function (req, res) {
     axios.get('https://www.profootballfocus.com/').then(function (response) {
 
@@ -71,7 +72,7 @@ app.get('/scrape', function (req, res) {
                 });
         });
         console.log('Scrape complete');
-        res.send('Scrape completed')
+        res.redirect('/');
     });
 });
 
