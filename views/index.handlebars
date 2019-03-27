@@ -22,7 +22,6 @@
     <div class="row p-3 bg-light">
         {{summary}}
     </div>
-    
     <div class="row bg-light">
         <button type="button" class="btn btn-dark m-2 btn-comment" id="{{id}}">Comment</button>
         {{#if saved}}
@@ -30,7 +29,17 @@
         <button type="button" class="btn btn-success m-2 btn-save" id="{{id}}">Save Article</button>
         {{/if}}
     </div>
-    
+
+    {{#if comment}}
+    <div class="row text-white p-3 bg-light text-dark">
+        <h5>Comments:</h5>
+    </div>
+    <div class="row text-white p-3 bg-light text-dark">
+        {{comment}}
+    </div>
+    {{else}}
+    {{/if}}
+
     {{/each}}
     {{else}}
     <div class="row d-flex justify-content-center bg-primary text-white border-bottom border-dark p-3">
@@ -40,22 +49,23 @@
 </div>
 
 
-<div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="commentModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="commentModalLabel">Enter your comment below</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <textarea cols="61" rows="5"></textarea>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Discard</button>
-        <button type="button" class="btn btn-primary">Comment</button>
-      </div>
+<div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="commentModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="commentModalLabel">Enter your comment below</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <textarea class="commentInput" cols="61" rows="5"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Discard</button>
+                <button type="button" class="btn btn-primary btn-save-comment">Comment</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
