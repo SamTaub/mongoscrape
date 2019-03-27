@@ -96,11 +96,12 @@ app.get('/api/saved', function (req, res) {
 
 //Render articles on homepage
 app.get('/', function (req, res) {
-    db.Article.find({})
+    db.Article.find({}).populate("comment")
         .then(function (dbArticle) {
             const hbsObject = {
                 article: dbArticle
             };
+            console.log(dbArticle);
             res.render("index", hbsObject);
         }).catch(function (err) {
             res.json(err);
@@ -175,6 +176,15 @@ app.post("/comments/:id", function (req, res) {
         });
 });
 
+app.delete("/comments/:id", function (req, res){
+    db.Comment.deleteOne({_id: req.params.id})
+    .then(function (dbComment){
+        res.json(dbComment);
+    })
+    .catch(function(err){
+        res.json(err);
+    });
+});
 
 //Start server
 app.listen(PORT, function () {

@@ -35,7 +35,10 @@
         <h5>Comments:</h5>
     </div>
     <div class="row text-white p-3 bg-light text-dark">
-        {{comment}}
+        {{comment.body}}
+    </div>
+    <div class ="row bg-light">
+        <button type="button" class="btn btn-danger m-2 btn-delete-comment" id="{{id}}" data={{comment._id}}>Delete</button>
     </div>
     {{else}}
     {{/if}}
