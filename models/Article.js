@@ -24,6 +24,7 @@ const ArticleSchema = new Schema({
     //Checks if article is saved
     saved: {
         type: Boolean,
+        default: false
     },
     //Create a reference to the associated comment
     comment: {

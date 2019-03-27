@@ -38,20 +38,8 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 //Scrape profootballfocus.com
-app.get('/', function (req, res) {
-    db.Article.find({})
-        .then(function (dbArticle) {
-            const hbsObject = {
-                article: dbArticle
-            };
-            res.render("index", hbsObject);
-        }).catch(function (err) {
-            res.json(err);
-        });
-});
-
-//Scrape profootballfocus.com
 app.get('/scrape', function (req, res) {
+    
     axios.get('https://www.profootballfocus.com/').then(function (response) {
 
         const $ = cheerio.load(response.data);
@@ -76,7 +64,40 @@ app.get('/scrape', function (req, res) {
     });
 });
 
-//Get saved articles
+//API Page for articles
+app.get('/api/articles', function (req, res) {
+    db.Article.find({})
+        .then(function (dbArticle) {
+            res.json(dbArticle)
+        }).catch(function (err) {
+            res.json(err);
+        });
+});
+
+//API Page for saved articles
+app.get('/api/saved', function(req, res){
+    db.Article.find({saved: true})
+    .then(function(savedArticle){
+        res.json(savedArticle);
+    }).catch(function (err) {
+        res.json(err);
+    });
+});
+
+//Render articles on homepage
+app.get('/', function (req, res) {
+    db.Article.find({})
+        .then(function (dbArticle) {
+            const hbsObject = {
+                article: dbArticle
+            };
+            res.render("index", hbsObject);
+        }).catch(function (err) {
+            res.json(err);
+        });
+});
+
+//Render saved articles on /saved
 app.get('/saved', function(req, res){
     db.Article.find({saved: true})
     .then(function(savedArticle){
@@ -88,6 +109,27 @@ app.get('/saved', function(req, res){
         res.json(err);
     });
 });
+
+//Save articles to saved API and update them in Mongo DB
+app.post('/api/saved/:id', function (req, res){
+    db.Article.findOneAndUpdate({_id: req.params.id}, {saved: true})
+    .then(function (article){
+        res.json(article)
+    }).catch(function (error){
+        res.json(error)
+    });
+});
+
+app.post('/api/removed/:id', function (req, res){
+    db.Article.findOneAndUpdate({_id: req.params.id}, {saved: false})
+    .then(function (article){
+        res.json(article)
+    }).catch(function (error){
+        res.json(error)
+    });
+});
+
+
 
 //Start server
 app.listen(PORT, function () {
