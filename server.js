@@ -104,8 +104,9 @@ app.get('/', function (req, res) {
             res.render("index", hbsObject);
         }).catch(function (err) {
             res.json(err);
-        });
+        });  
 });
+
 
 //Render saved articles on /saved
 app.get('/saved', function (req, res) {
