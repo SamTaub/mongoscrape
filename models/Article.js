@@ -19,7 +19,7 @@ const ArticleSchema = new Schema({
     //Require a summary string
     summary: {
         type: String,
-        required: true,
+        required: true
     },
     //Checks if article is saved
     saved: {

@@ -33,8 +33,29 @@
     
     {{/each}}
     {{else}}
-    <div class="row p-3 bg-light">
-        <h4>No saved articles. Click 'Scrape' PFF to get some of the latest news.</h4>
+    <div class="row d-flex justify-content-center bg-primary text-white border-bottom border-dark p-3">
+        <h4>No new articles to view. Click 'Scrape' to get the latest news from PFF.</h4>
     </div>
     {{/if}}
+</div>
+
+
+<div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="commentModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="commentModalLabel">Enter your comment below</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <textarea cols="61" rows="5"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Discard</button>
+        <button type="button" class="btn btn-primary">Comment</button>
+      </div>
+    </div>
+  </div>
 </div>
