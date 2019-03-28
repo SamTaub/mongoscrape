@@ -96,7 +96,7 @@ app.get('/api/saved', function (req, res) {
 
 //Render articles on homepage
 app.get('/', function (req, res) {
-    db.Article.find({}).populate("comment")
+    db.Article.find({}).sort({_id: -1}).populate("comment")
         .then(function (dbArticle) {
             const hbsObject = {
                 article: dbArticle
