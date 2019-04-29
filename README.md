@@ -1,25 +1,35 @@
 # ProFootballFocus Scrape
 
-Heroku Deployment [https://murmuring-coast-63656.herokuapp.com/]
+![Image of Home Page](/assets/mongopreview1.png)
 
 ## Description
 
-ProFootballFocus Scrape uses Cheerio to scrape the latest NFL news and analysis from profootballfocus.com.  It is a full stack web application that utilizes technologies such as node, express, and mongoDB.
+ProFootballFocus Scrape uses the web scraping technique to generate the latest NFL news and analysis from profootballfocus.com.  Users can scrape for more news, find links to the lastest news, leave comments, and save articles to read for later.
 
-## How to use ProFootballFocus Scrape
+[Deployed Version](https://murmuring-coast-63656.herokuapp.com/)
 
-* Click on the 'scrape' button which will provide you with the latest news.
+## Instructions
 
-* Want to comment?  Click on the 'comment' button to leave your thoughts about the story.
+* Scraping
+    * Click the "Scrape" button to refresh the page for the latest articles from ProFootballFocus
 
-* Regret that comment?  Click on delete to remove your comment from the story.
+* Commenting
+ * Click on "Comment" to leave a comment on an article seen on the home page
+ * Click "Delete" to remove the comment from the article
 
-* Click 'save' to save an article to read later.
+* Saving
+    * Click "Save" to save an article to read later
+    * Click "View Saved" at the top of the page to view your saved articles
+    * Click "Remove from" to remove an article from your saved list
 
-* Click on 'View saved' to view your saved articles.  Click on 'remove from saved' to remove a story from the list.
+![Image of Saved Page](/assets/mongopreview2.png)
 
-## Technology
 
+## Technology used
+
+* HTML5
+* CSS3
+* Bootstrap
 * jquery
 * express-handlebars
 * express
@@ -31,13 +41,19 @@ ProFootballFocus Scrape uses Cheerio to scrape the latest NFL news and analysis 
 * mongoDB
 * Heroku
 
+## Contributions
+
+Contributions to this project are welcome.  Feel free to fix current issues or add new features by git cloning the repository and submitting a pull request.
+
 ## Current issues
 
 * Duplicate articles are allowed in the database
-* Users are unable to comment on their saved articles
-* Comments only clear from the comments collection - their populated article retains the comment ID but the value is changed null until updated.
+* Users are unable to comment on articles once they are saved
+* Multiple comments are not allowed
+* The text area in the comment modal stretches outside the modal
 
 ## Future versions
 
-* Polish frontend UI
-* Fix current issues
+* Improve current interface for a more pleasing experience and easier navigation
+* Allow multiple comments
+* Improve the saved articles page by allowing comments
