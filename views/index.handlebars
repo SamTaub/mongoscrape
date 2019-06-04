@@ -32,15 +32,20 @@
 
     {{#if comment}}
     <div class="row text-white p-3 bg-light text-dark">
-        <h5>Comments:</h5>
+        <p>Comments:</p>
     </div>
+    {{#each comment}}
     <div class="row text-white p-3 bg-light text-dark">
-        {{comment.body}}
+        {{body}}
     </div>
-    <div class ="row bg-light">
-        <button type="button" class="btn btn-danger m-2 btn-delete-comment" id="{{id}}" data={{comment._id}}>Delete</button>
+    <div class="row bg-light">
+        <button type="button" class="btn btn-danger m-2 btn-delete-comment" id="{{id}}" data={{_id}}>Delete</button>
     </div>
+    {{/each}}
     {{else}}
+    <div class="row text-white p-3 bg-light text-dark">
+        <p>No comments to display</p>
+    </div>
     {{/if}}
 
     {{/each}}
