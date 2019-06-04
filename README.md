@@ -30,15 +30,14 @@ ProFootballFocus Scrape uses the web scraping technique to generate the latest N
 * HTML5
 * CSS3
 * Bootstrap
-* jquery
-* express-handlebars
-* express
-* node
-* axios
-* cheerio
-* bootstrap
+* jQuery
+* Express-handlebars
+* Express
+* Node
+* Axios
+* Cheerio
 * mLab provision for mongoDB
-* mongoDB
+* MongoDB
 * Heroku
 
 ## Contributions
