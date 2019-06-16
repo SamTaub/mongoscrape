@@ -4,11 +4,7 @@
 
 ## Description
 
-Update 6/18/2019: This project has been updated to scrape CNET instead of profootballfocus.com. I was unable to get the site working correctly using the new layout from PFF. I will continue to make small updates to this project to reflect the change to CNET.
-
-Note: As of 6/18/2019, this project is currently broken due to changes at profootballfocus.com. I am currently working on fixing the issues and considering using a different site to scrape.
-
-ProFootballFocus Scrape uses the web scraping technique to generate the latest NFL news and analysis from profootballfocus.com. Users can scrape for more news, find links to the lastest news, leave comments, and save articles to read for later.
+CScrape uses the web scraping technique to generate the latest tech news and rumors from cnet.com. Users can scrape for more news, find links to the lastest news, leave comments, and save articles to read for later.
 
 [Deployed Version](https://murmuring-coast-63656.herokuapp.com/)
 
@@ -56,5 +52,5 @@ Contributions to this project are welcome. Feel free to fix current issues or ad
 
 ## Future versions
 
-- Improve current interface for a more pleasing experience and easier navigation
+- Improve current interface for a more pleasent experience and easier navigation
 - Improve the saved articles page by allowing comments
