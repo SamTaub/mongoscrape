@@ -40,26 +40,50 @@ app.set("view engine", "handlebars");
 
 //Scrape profootballfocus.com
 app.get("/scrape", function(req, res) {
-  axios.get("https://www.profootballfocus.com/").then(function(response) {
+  axios.get("https://www.cnet.com/").then(function(response) {
     const $ = cheerio.load(response.data);
 
-    $("div.news-item").each(function(i, element) {
+    $("div.item").each(function(i, element) {
       let result = {};
+
       result.title = $(this)
-        .children("div.content")
+        .children("div.col-5")
+        .children("div.col-4")
+        .children("h3")
         .children("a")
-        .children("h5")
         .text();
+
       result.link =
-        "https://www.profootballfocus.com/" +
+        "https://www.cnet.com/" +
         $(this)
-          .children("div.content")
+          .children("div.col-5")
+          .children("div.col-4")
+          .children("p")
           .children("a")
           .attr("href");
+
       result.summary = $(this)
-        .children("div.content")
+        .children("div.col-5")
+        .children("div.col-4")
         .children("p")
+        .children("a")
         .text();
+
+      // result.title = $(this)
+      //   .children("div.content")
+      //   .children("a")
+      //   .children("h5")
+      //   .text();
+      // result.link =
+      //   "https://www.profootballfocus.com/" +
+      //   $(this)
+      //     .children("div.content")
+      //     .children("a")
+      //     .attr("href");
+      // result.summary = $(this)
+      //   .children("div.content")
+      //   .children("p")
+      //   .text();
 
       db.Article.create(result)
         .then(function(dbArticle) {
@@ -68,6 +92,7 @@ app.get("/scrape", function(req, res) {
         .catch(function(err) {
           console.log(err);
         });
+      console.log(result);
     });
     console.log("Scrape complete");
     res.redirect("/");
