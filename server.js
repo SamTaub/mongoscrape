@@ -69,22 +69,6 @@ app.get("/scrape", function(req, res) {
         .children("a")
         .text();
 
-      // result.title = $(this)
-      //   .children("div.content")
-      //   .children("a")
-      //   .children("h5")
-      //   .text();
-      // result.link =
-      //   "https://www.profootballfocus.com/" +
-      //   $(this)
-      //     .children("div.content")
-      //     .children("a")
-      //     .attr("href");
-      // result.summary = $(this)
-      //   .children("div.content")
-      //   .children("p")
-      //   .text();
-
       db.Article.create(result)
         .then(function(dbArticle) {
           console.log(dbArticle);
@@ -135,7 +119,7 @@ app.get("/api/saved", function(req, res) {
 //Render articles on homepage
 app.get("/", function(req, res) {
   db.Article.find({})
-    .sort({ _id: -1 })
+    .sort({ _id: 1 })
     .populate("comment")
     .then(function(dbArticle) {
       const hbsObject = {
