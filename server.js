@@ -1,5 +1,5 @@
 //Require Express to run the server
-const express = require("express");
+const express = require('express');
 
 //Initialize Express
 const app = express();
@@ -8,65 +8,65 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // Make public a static folder
-app.use(express.static("public"));
+app.use(express.static('public'));
 
 //Require Mongoose to interact with the database
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 //Require models for the database
-const db = require("./models");
+const db = require('./models');
 
 //Establish a Port for the application use
 const PORT = process.env.PORT || 3000;
 
 //Establish connection to Mongo Database
 const MONGODB_URI =
-  process.env.MONGODB_URI || "mongodb://localhost/mongoscrape";
+  process.env.MONGODB_URI || 'mongodb://localhost/mongoscrape';
 
 mongoose.connect(MONGODB_URI);
 
 //Require Cheerio to scrape webpage
-const cheerio = require("cheerio");
+const cheerio = require('cheerio');
 
 //Require Axios to make 'GET' and 'POST' requests
-const axios = require("axios");
+const axios = require('axios');
 
 //Require Express Handlebars to utilize as the templating engine
-const exphbs = require("express-handlebars");
+const exphbs = require('express-handlebars');
 
 //Set Express Handlebars as the view engine
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-app.set("view engine", "handlebars");
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+app.set('view engine', 'handlebars');
 
 //Scrape profootballfocus.com
-app.get("/scrape", function(req, res) {
-  axios.get("https://www.cnet.com/").then(function(response) {
+app.get('/scrape', function(req, res) {
+  axios.get('https://www.cnet.com/').then(function(response) {
     const $ = cheerio.load(response.data);
 
-    $("div.item").each(function(i, element) {
+    $('div.item').each(function(i, element) {
       let result = {};
 
       result.title = $(this)
-        .children("div.col-5")
-        .children("div.col-4")
-        .children("h3")
-        .children("a")
+        .children('div.col-5')
+        .children('div.col-4')
+        .children('h3')
+        .children('a')
         .text();
 
       result.link =
-        "https://www.cnet.com/" +
+        'https://www.cnet.com/' +
         $(this)
-          .children("div.col-5")
-          .children("div.col-4")
-          .children("p")
-          .children("a")
-          .attr("href");
+          .children('div.col-5')
+          .children('div.col-4')
+          .children('p')
+          .children('a')
+          .attr('href');
 
       result.summary = $(this)
-        .children("div.col-5")
-        .children("div.col-4")
-        .children("p")
-        .children("a")
+        .children('div.col-5')
+        .children('div.col-4')
+        .children('p')
+        .children('a')
         .text();
 
       db.Article.create(result)
@@ -78,13 +78,13 @@ app.get("/scrape", function(req, res) {
         });
       console.log(result);
     });
-    console.log("Scrape complete");
-    res.redirect("/");
+    console.log('Scrape complete');
+    res.redirect('/');
   });
 });
 
 //API Page for articles
-app.get("/api/articles", function(req, res) {
+app.get('/api/articles', function(req, res) {
   db.Article.find({})
     .then(function(dbArticle) {
       res.json(dbArticle);
@@ -95,7 +95,7 @@ app.get("/api/articles", function(req, res) {
 });
 
 //API Page for comments
-app.get("/comments", function(req, res) {
+app.get('/comments', function(req, res) {
   db.Comment.find({})
     .then(function(dbComment) {
       res.json(dbComment);
@@ -106,7 +106,7 @@ app.get("/comments", function(req, res) {
 });
 
 //API Page for saved articles
-app.get("/api/saved", function(req, res) {
+app.get('/api/saved', function(req, res) {
   db.Article.find({ saved: true })
     .then(function(savedArticle) {
       res.json(savedArticle);
@@ -117,16 +117,16 @@ app.get("/api/saved", function(req, res) {
 });
 
 //Render articles on homepage
-app.get("/", function(req, res) {
+app.get('/', function(req, res) {
   db.Article.find({})
-    .sort({ _id: 1 })
-    .populate("comment")
+    .sort({ _id: -1 })
+    .populate('comment')
     .then(function(dbArticle) {
       const hbsObject = {
         article: dbArticle
       };
       console.log(dbArticle);
-      res.render("index", hbsObject);
+      res.render('index', hbsObject);
     })
     .catch(function(err) {
       res.json(err);
@@ -134,13 +134,13 @@ app.get("/", function(req, res) {
 });
 
 //Render saved articles on /saved
-app.get("/saved", function(req, res) {
+app.get('/saved', function(req, res) {
   db.Article.find({ saved: true })
     .then(function(savedArticle) {
       const hbsObject = {
         article: savedArticle
       };
-      res.render("saved", hbsObject);
+      res.render('saved', hbsObject);
     })
     .catch(function(err) {
       res.json(err);
@@ -148,7 +148,7 @@ app.get("/saved", function(req, res) {
 });
 
 //Save articles to saved API and update them in Mongo DB
-app.post("/api/saved/:id", function(req, res) {
+app.post('/api/saved/:id', function(req, res) {
   db.Article.findOneAndUpdate({ _id: req.params.id }, { saved: true })
     .then(function(article) {
       res.json(article);
@@ -158,7 +158,7 @@ app.post("/api/saved/:id", function(req, res) {
     });
 });
 //Create a dummy route for deleted articles
-app.post("/api/removed/:id", function(req, res) {
+app.post('/api/removed/:id', function(req, res) {
   db.Article.findOneAndUpdate({ _id: req.params.id }, { saved: false })
     .then(function(article) {
       res.json(article);
@@ -168,11 +168,11 @@ app.post("/api/removed/:id", function(req, res) {
     });
 });
 
-app.get("/articles/:id", function(req, res) {
+app.get('/articles/:id', function(req, res) {
   // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
   db.Article.findOne({ _id: req.params.id })
     // ..and populate all of the notes associated with it
-    .populate("comment")
+    .populate('comment')
     .then(function(dbArticle) {
       // If we were able to successfully find an Article with the given id, send it back to the client
       res.json(dbArticle);
@@ -183,7 +183,7 @@ app.get("/articles/:id", function(req, res) {
     });
 });
 
-app.post("/comments/:id", function(req, res) {
+app.post('/comments/:id', function(req, res) {
   // Create a new note and pass the req.body to the entry
   db.Comment.create(req.body)
     .then(function(dbComment) {
@@ -206,7 +206,7 @@ app.post("/comments/:id", function(req, res) {
     });
 });
 
-app.delete("/comments/:id", function(req, res) {
+app.delete('/comments/:id', function(req, res) {
   db.Comment.deleteOne({ _id: req.params.id })
     .then(function(dbComment) {
       res.json(dbComment);
