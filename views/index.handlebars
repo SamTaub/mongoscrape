@@ -16,13 +16,23 @@
         {{#each article}}
         <div class="article-card">
             <div class="article-card__title">
-                <h3 class="article-card__title-text">{{title}}</h3>
+                <h3 class="article-card__title-text">
+                    <a href="{{link}}" target="_blank" class="article-card__title-link">{{title}}</a></h3>
             </div>
             <div class="article-card__content">
-                <figure class="article-card__img-figure">
-                    <img src="{{image}}" alt="{{title}}" class="article-card__img">
-                </figure>
-                <p class="article-card__text-summary">{{summary}}</p>
+                <img src="{{image}}" alt="{{title}}" class="article-card__content-img">
+                <p class="article-card__content-summary-text">{{summary}}</p>
+            </div>
+            <div class="article-card__buttons">
+                <div class="article-card__buttons-comment">
+                    <button type="button" class="btn btn-comment" id="{{id}}">Comment</button>
+                </div>
+                {{#if saved}}
+                {{else}}
+                <div class="article-card__buttons-save">
+                    <button type="button" class="btn btn-save" id="{{id}}">Save Article</button>
+                </div>
+                {{/if}}
             </div>
         </div>
         {{/each}}

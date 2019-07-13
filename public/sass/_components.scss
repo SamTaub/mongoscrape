@@ -2,6 +2,36 @@
   margin-top: 3rem;
   box-shadow: $shadow-dark;
 
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+
+    &-comment {
+      margin-left: 4.15rem;
+      margin-bottom: 3rem;
+    }
+
+    &-save {
+      margin-right: 4.15rem;
+    }
+  }
+
+  &__content {
+    display: flex;
+    padding: 3rem;
+
+    &-img {
+      height: 15rem;
+      width: 15rem;
+      box-shadow: $shadow-dark;
+    }
+
+    &-summary-text {
+      font-size: 1.8rem;
+      margin-left: 1rem;
+    }
+  }
+
   &__title {
     display: flex;
     width: 100%;
@@ -43,10 +73,4 @@
   &-scrape {
     margin-right: 1rem;
   }
-}
-
-img {
-  height: 11rem;
-  width: 11rem;
-  box-shadow: $shadow-dark;
 }

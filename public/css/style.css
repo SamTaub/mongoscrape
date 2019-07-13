@@ -11,6 +11,11 @@ html {
   box-sizing: border-box;
   font-size: 62.5%; }
 
+a,
+a:visited {
+  color: white;
+  text-decoration: none; }
+
 .container {
   width: 95%;
   margin: 1rem auto; }
@@ -32,6 +37,24 @@ html {
 .article-card {
   margin-top: 3rem;
   box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.3); }
+  .article-card__buttons {
+    display: flex;
+    justify-content: space-between; }
+    .article-card__buttons-comment {
+      margin-left: 4.15rem;
+      margin-bottom: 3rem; }
+    .article-card__buttons-save {
+      margin-right: 4.15rem; }
+  .article-card__content {
+    display: flex;
+    padding: 3rem; }
+    .article-card__content-img {
+      height: 15rem;
+      width: 15rem;
+      box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.3); }
+    .article-card__content-summary-text {
+      font-size: 1.8rem;
+      margin-left: 1rem; }
   .article-card__title {
     display: flex;
     width: 100%;
@@ -62,8 +85,3 @@ html {
 
 .btn-scrape {
   margin-right: 1rem; }
-
-img {
-  height: 11rem;
-  width: 11rem;
-  box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.3); }
