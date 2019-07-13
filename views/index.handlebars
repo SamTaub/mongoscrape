@@ -15,12 +15,14 @@
         {{#if article}}
         {{#each article}}
         <div class="article-card">
-            <figure class="article-card__img-figure">
-                <img src="{{image}}" alt="{{title}}" class="article-card__img">
-            </figure>
-            <div class="article-card__text">
-                <h3 class="article-title">{{title}}</h3>
-                <p class="article-summary">{{summary}}</p>
+            <div class="article-card__title">
+                <h3 class="article-card__title-text">{{title}}</h3>
+            </div>
+            <div class="article-card__content">
+                <figure class="article-card__img-figure">
+                    <img src="{{image}}" alt="{{title}}" class="article-card__img">
+                </figure>
+                <p class="article-card__text-summary">{{summary}}</p>
             </div>
         </div>
         {{/each}}

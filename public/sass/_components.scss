@@ -1,11 +1,18 @@
 .article-card {
   margin-top: 3rem;
   box-shadow: $shadow-dark;
-  display: flex;
-  padding: 3rem;
 
-  &__text {
-    margin-left: 2rem;
+  &__title {
+    display: flex;
+    width: 100%;
+    padding: 2rem;
+    justify-content: center;
+    background-image: $color-background-1;
+    color: #fff;
+
+    &-text {
+      font-size: 2rem;
+    }
   }
 }
 
@@ -41,4 +48,5 @@
 img {
   height: 11rem;
   width: 11rem;
+  box-shadow: $shadow-dark;
 }

@@ -31,11 +31,16 @@ html {
 
 .article-card {
   margin-top: 3rem;
-  box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.3);
-  display: flex;
-  padding: 3rem; }
-  .article-card__text {
-    margin-left: 2rem; }
+  box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.3); }
+  .article-card__title {
+    display: flex;
+    width: 100%;
+    padding: 2rem;
+    justify-content: center;
+    background-image: linear-gradient(to right bottom, #ff4d4d, #8b0000);
+    color: #fff; }
+    .article-card__title-text {
+      font-size: 2rem; }
 
 .btn, .btn:link, .btn:visited {
   background-image: linear-gradient(to right bottom, #ff4d4d, #8b0000);
@@ -60,4 +65,5 @@ html {
 
 img {
   height: 11rem;
-  width: 11rem; }
+  width: 11rem;
+  box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.3); }
