@@ -1,0 +1,63 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit; }
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; }
+
+.container {
+  width: 95%;
+  margin: 1rem auto; }
+
+.header {
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+  .header__heading {
+    font-size: 4rem; }
+    .header__heading-secondary {
+      margin-top: 1rem;
+      font-size: 3rem; }
+
+.article-list {
+  margin-top: 1.5rem; }
+
+.article-card {
+  margin-top: 3rem;
+  box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.3);
+  display: flex;
+  padding: 3rem; }
+  .article-card__text {
+    margin-left: 2rem; }
+
+.btn, .btn:link, .btn:visited {
+  background-image: linear-gradient(to right bottom, #ff4d4d, #8b0000);
+  padding: 1.5rem 2rem;
+  cursor: pointer;
+  transition: all 0.2;
+  color: #fff;
+  font-size: 2rem;
+  text-decoration: none;
+  border-radius: 10rem; }
+
+.btn:hover {
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4);
+  transform: translateY(-2px); }
+
+.btn:active {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.4);
+  transform: translateY(0); }
+
+.btn-scrape {
+  margin-right: 1rem; }
+
+img {
+  height: 11rem;
+  width: 11rem; }

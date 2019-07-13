@@ -53,6 +53,13 @@ app.get('/scrape', function(req, res) {
         .children('a')
         .text();
 
+      result.image = $(this)
+        .children('div.col-5')
+        .children('figure.col-1')
+        .children('a')
+        .children('img')
+        .attr('src');
+
       result.link =
         'https://www.cnet.com/' +
         $(this)
@@ -76,7 +83,6 @@ app.get('/scrape', function(req, res) {
         .catch(function(err) {
           console.log(err);
         });
-      console.log(result);
     });
     console.log('Scrape complete');
     res.redirect('/');

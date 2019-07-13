@@ -1,5 +1,5 @@
 //Require Mongoose module
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 //Create reference to the Mongoose Schema constructor
 const Schema = mongoose.Schema;
@@ -10,6 +10,11 @@ const ArticleSchema = new Schema({
   title: {
     type: String,
     required: true
+  },
+  //Require img url as a string
+  image: {
+    type: String,
+    require: true
   },
   //Require a link string
   link: {
@@ -30,13 +35,13 @@ const ArticleSchema = new Schema({
   comment: [
     {
       type: Schema.Types.ObjectId,
-      ref: "Comment"
+      ref: 'Comment'
     }
   ]
 });
 
 //Create model for Articles
-const Article = mongoose.model("Article", ArticleSchema);
+const Article = mongoose.model('Article', ArticleSchema);
 
 //Export the Aricle Model
 module.exports = Article;

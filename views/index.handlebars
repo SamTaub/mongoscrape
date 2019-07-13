@@ -1,50 +1,83 @@
-<div class="row bg-light text-dark text-center p-3">
+<div class="container">
+
+    <header class="header">
+        <div class="header__heading-container">
+            <h1 class="header__heading">CScrape</h1>
+            <h2 class="header__heading header__heading-secondary">Scrape CNET for the latest in tech</h2>
+        </div>
+        <div class="header__button-container">
+            <a href="/scrape"><button type="button" class="btn btn-scrape">Scrape</button></a>
+            <a href="/saved"><button type="button" class="btn btn-view-saved">View Saved</button></a>
+        </div>
+    </header>
+
+    <main class="article-list">
+        {{#if article}}
+        {{#each article}}
+        <div class="article-card">
+            <figure class="article-card__img-figure">
+                <img src="{{image}}" alt="{{title}}" class="article-card__img">
+            </figure>
+            <div class="article-card__text">
+                <h3 class="article-title">{{title}}</h3>
+                <p class="article-summary">{{summary}}</p>
+            </div>
+        </div>
+        {{/each}}
+        {{else}}
+        {{/if}}
+    </main>
+</div>
+
+
+
+
+{{!-- <div class="row text-dark text-center p-3">
     <div class="col">
-        <h1 class="title">CScrape: Scrape the latest from CNET</h1>
+        <h1 class="text-white heading-primary">CScrape</h1>
+        <h2 class="text-white heading-secondary">Scrape the latest from CNET</h2>
+        <a href="/scrape"><button type="button" class="btn btn-danger m-2">Scrape</button></a>
+        <a href="/saved"><button type="button" class="btn btn-success m-2">View Saved</button></a>
     </div>
 </div>
 
 <div class="container mb-5">
-    <div class="row">
-        <div class="col p-3 d-flex justify-content-center">
-            <a href="/scrape"><button type="button" class="btn btn-danger m-2">Scrape</button></a>
-            <a href="/saved"><button type="button" class="btn btn-success m-2">View Saved</button></a>
-        </div>
-    </div>
 
     {{#if article}}
     {{#each article}}
-    <div class="row d-flex justify-content-left bg-primary text-white border-bottom border-dark p-3">
-        <a href="{{link}}" target="_blank" class="text-white">
-            <h4>{{title}}</h4>
-        </a>
-    </div>
-    <div class="row p-3 bg-light">
-        {{summary}}
-    </div>
-    <div class="row bg-light">
-        <button type="button" class="btn btn-dark m-2 btn-comment" id="{{id}}">Comment</button>
-        {{#if saved}}
-        {{else}}
-        <button type="button" class="btn btn-success m-2 btn-save" id="{{id}}">Save Article</button>
-        {{/if}}
-    </div>
+    <div class="article-card">
+        <div class="row d-flex justify-content-left bg-primary text-white border-bottom border-dark p-3">
+            <a href="{{link}}" target="_blank" class="text-white">
+                <h4>{{title}}</h4>
+            </a>
+        </div>
+        <div class="row p-3 bg-light">
+            {{summary}}
+        </div>
+        <div class="row bg-light">
+            <button type="button" class="btn btn-dark m-2 btn-comment" id="{{id}}">Comment</button>
+            {{#if saved}}
+            {{else}}
+            <button type="button" class="btn btn-success m-2 btn-save" id="{{id}}">Save Article</button>
+            {{/if}}
+        </div>
 
-    {{#if comment}}
-    <div class="row text-white p-3 bg-light text-dark">
-        <p>Comments:</p>
-    </div>
-    {{#each comment}}
-    <div class="row text-white p-3 bg-light text-dark">
-        {{body}}
-    </div>
-    <div class="row bg-light">
-        <button type="button" class="btn btn-danger m-2 btn-delete-comment" id="{{id}}" data={{_id}}>Delete</button>
-    </div>
-    {{/each}}
-    {{else}}
-    <div class="row text-white p-3 bg-light text-dark">
-        <p>No comments to display</p>
+        {{#if comment}}
+        <div class="row text-white p-3 bg-light text-dark">
+            <p>Comments:</p>
+        </div>
+        {{#each comment}}
+        <div class="row text-white p-3 bg-light text-dark">
+            {{body}}
+        </div>
+        <div class="row bg-light">
+            <button type="button" class="btn btn-danger m-2 btn-delete-comment" id="{{id}}" data={{_id}}>Delete</button>
+        </div>
+        {{/each}}
+        {{else}}
+        <div class="row text-white p-3 bg-light text-dark">
+            <p>No comments to display</p>
+        </div>
     </div>
     {{/if}}
 
@@ -76,4 +109,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
